@@ -5,7 +5,6 @@ import Header from './components/Header/Header';
 import Report from './components/ReportPDF/Report';
 import usePdfGenerator from './hooks/usePdfGenerator';
 import PieRechartComponent from './components/PieChart/Chart';
-import { ComposedChart } from 'recharts';
 
 function App() {
   const generatePDF = usePdfGenerator();
@@ -36,9 +35,7 @@ function App() {
             <span>Download your ReportPDF</span>
           </div>
         </DownloadButton>
-        <ComposedChart style={{ display: 'none' }}>
-          <PieRechartComponent />
-        </ComposedChart>
+        <PieRechartComponent />
       </div>
     </div>
   );

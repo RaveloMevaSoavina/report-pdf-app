@@ -7,7 +7,7 @@ import {
   Image,
 } from '@react-pdf/renderer';
 import Logo from '../../assets/logo.png';
-import PieChartImage from '../../assets/chart.png';
+// import PieChartImage from '../../assets/chart.png';
 
 const styles = StyleSheet.create({
   page: {},
@@ -50,7 +50,7 @@ function Report() {
         </View>
 
         <View style={styles.sectionChart}>
-          <Image src={PieChartImage} />
+          {/* <Image src={PieChartImage} /> */}
           <Text style={styles.labelChart}>La composition de vos flux</Text>
         </View>
       </Page>
