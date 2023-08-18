@@ -4,12 +4,15 @@ import downloadSvg from './assets/download.svg';
 import Header from './components/Header/Header';
 import Report from './components/ReportPDF/Report';
 import usePdfGenerator from './hooks/usePdfGenerator';
-// import PieRechartComponent from './components/PieChart/Chart';
+import useImageGenerator from './hooks/useImageGenerator';
+import PieRechartComponent from './components/PieChart/Chart';
 
 function App() {
   const generatePDF = usePdfGenerator();
+  const generateImageOfChart = useImageGenerator();
 
   const handleDownload = async () => {
+    generateImageOfChart(<PieRechartComponent />, 'chart');
     generatePDF(<Report />, 'PDF_REPORT.pdf');
   };
 

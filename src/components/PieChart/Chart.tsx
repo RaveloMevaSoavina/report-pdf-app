@@ -1,3 +1,4 @@
+import ReactPDFChart from 'react-pdf-charts';
 import { PieChart, Pie, Cell, Legend } from 'recharts';
 
 const PieRechartComponent = () => {
@@ -19,25 +20,27 @@ const PieRechartComponent = () => {
   ];
 
   return (
-    <PieChart width={730} height={300}>
-      <Pie
-        data={pieData}
-        color='#000000'
-        dataKey='value'
-        nameKey='name'
-        cx='50%'
-        cy='50%'
-        outerRadius={120}
-        fill='#8884d8'>
-        {pieData.map((entry, index) => (
-          <Cell
-            key={`cell-${entry.name}`}
-            fill={COLORS[index % COLORS.length]}
-          />
-        ))}
-      </Pie>
-      <Legend />
-    </PieChart>
+    <ReactPDFChart>
+      <PieChart width={730} height={300}>
+        <Pie
+          data={pieData}
+          color='red'
+          dataKey='value'
+          nameKey='name'
+          cx='50%'
+          cy='50%'
+          outerRadius={120}
+          fill='#8884d8'>
+          {pieData.map((entry, index) => (
+            <Cell
+              key={`cell-${entry.name}`}
+              fill={COLORS[index % COLORS.length]}
+            />
+          ))}
+        </Pie>
+        <Legend />
+      </PieChart>
+    </ReactPDFChart>
   );
 };
 
