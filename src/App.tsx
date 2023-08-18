@@ -2,10 +2,16 @@ import './App.css';
 import DownloadButton from './components/Button/Download';
 import downloadSvg from './assets/download.svg';
 import Header from './components/Header/Header';
+import Report from './components/ReportPDF/Report';
+import usePdfGenerator from './hooks/usePdfGenerator';
+import PieRechartComponent from './components/PieChart/Chart';
+import { ComposedChart } from 'recharts';
 
 function App() {
-  const handleDownload = () => {
-    alert('downloading....');
+  const generatePDF = usePdfGenerator();
+
+  const handleDownload = async () => {
+    generatePDF(<Report />, 'PDF_REPORT.pdf');
   };
 
   return (
@@ -30,6 +36,9 @@ function App() {
             <span>Download your ReportPDF</span>
           </div>
         </DownloadButton>
+        <ComposedChart style={{ display: 'none' }}>
+          <PieRechartComponent />
+        </ComposedChart>
       </div>
     </div>
   );
