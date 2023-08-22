@@ -4,15 +4,20 @@ import downloadSvg from './assets/download.svg';
 import Header from './components/Header/Header';
 import Report from './components/ReportPDF/Report';
 import usePdfGenerator from './hooks/usePdfGenerator';
-import useImageGenerator from './hooks/useImageGenerator';
-import PieRechartComponent from './components/PieChart/Chart';
+import { Chart, ArcElement } from 'chart.js';
+import PieChart from './components/PieChart/Chart';
+
+// import useImageGenerator from './hooks/useImageGenerator';
+// import PieRechartComponent from './components/PieChart/Chart';
+
+Chart.register(ArcElement);
 
 function App() {
   const generatePDF = usePdfGenerator();
-  const generateImageOfChart = useImageGenerator();
+  // const generateImageOfChart = useImageGenerator();
 
   const handleDownload = async () => {
-    generateImageOfChart(<PieRechartComponent />, 'chart');
+    // generateImageOfChart(<PieRechartComponent />, 'chart');
     generatePDF(<Report />, 'PDF_REPORT.pdf');
   };
 
@@ -38,7 +43,9 @@ function App() {
             <span>Download your ReportPDF</span>
           </div>
         </DownloadButton>
-        {/* <PieRechartComponent /> */}
+        <div className='image'>
+          <PieChart />
+        </div>
       </div>
     </div>
   );
