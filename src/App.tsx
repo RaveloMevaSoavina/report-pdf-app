@@ -5,21 +5,18 @@ import Header from './components/Header/Header';
 import Report from './components/ReportPDF/Report';
 import usePdfGenerator from './hooks/usePdfGenerator';
 import { Chart, ArcElement } from 'chart.js';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import PieChart from './components/PieChart/Chart';
 
 Chart.register(ArcElement);
 
-function App() {
+const App = () => {
+  const [imageSrc, setImageSrc] = useState<string>('');
   const generatePDF = usePdfGenerator();
 
-  const [imageSrc, setImageSrc] = useState<string>('');
-
-  const handleDownload = async () => {
+  const handleDownload = useCallback(async () => {
     generatePDF(<Report imageSrc={imageSrc} />, 'PDF_REPORT.pdf');
-  };
-
-  console.log(imageSrc);
+  }, [generatePDF, imageSrc]);
 
   return (
     <div id='root'>
@@ -47,6 +44,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

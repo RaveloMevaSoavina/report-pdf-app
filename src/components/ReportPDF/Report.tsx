@@ -1,45 +1,13 @@
-import {
-  Page,
-  Text,
-  View,
-  Document,
-  StyleSheet,
-  Image,
-} from '@react-pdf/renderer';
+import { Page, Text, View, Document, Image } from '@react-pdf/renderer';
 import Logo from '../../assets/logo.png';
+import { FC } from 'react';
+import { styles } from './Report.stylesheet';
 
-const styles = StyleSheet.create({
-  page: {},
-  section: { color: '#00A7A6', textAlign: 'center', margin: 30 },
-  imageContainer: {
-    position: 'absolute',
-    top: -10,
-    right: -10,
-  },
-  image: { width: 50, height: 50, padding: 10 },
-  imageWrapper: {
-    width: 50,
-    height: 50,
-    backgroundColor: '#006262',
-    borderRadius: '100%',
-  },
-  sectionChart: {
-    color: '#222',
-    textAlign: 'center',
-    margin: 30,
-  },
-  labelChart: {
-    fontWeight: 800,
-    marginTop: 20,
-  },
-  pieChart: {
-    width: 300,
-    height: 300,
-    margin: 'auto',
-  },
-});
+interface IReport {
+  imageSrc: string;
+}
 
-function Report({ imageSrc }: { imageSrc: string }) {
+const Report: FC<IReport> = ({ imageSrc }) => {
   return (
     <Document>
       <Page size='A4' style={styles.page}>
@@ -61,6 +29,6 @@ function Report({ imageSrc }: { imageSrc: string }) {
       </Page>
     </Document>
   );
-}
+};
 
 export default Report;
