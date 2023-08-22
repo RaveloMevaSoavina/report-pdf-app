@@ -6,7 +6,7 @@
 #root {
   width: 100vw;
   height: 100vh;
-  /* background: #121413; */
+  background: #121413;
 }
 
 .root-title {
@@ -44,4 +44,8 @@
   width: 500px;
   margin-top: 300px;
   margin-bottom: 40px;
+}
+
+.no-chart {
+  display: none;
 }

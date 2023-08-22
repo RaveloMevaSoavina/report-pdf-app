@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useRef } from 'react';
 import { Pie } from 'react-chartjs-2';
 
 const data = {
@@ -17,10 +17,29 @@ const data = {
   ],
 };
 
-const PieChart = () => {
+const options = {
+  animation: {
+    duration: 0, // Set the animation duration to 0 to disable animations
+  },
+};
+
+const PieChart = ({ setImageSrc }: { setImageSrc: (src: string) => void }) => {
+  const pieRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (pieRef.current) {
+      setImageSrc(pieRef.current.canvas.toDataURL('image/png'));
+    }
+  }, [setImageSrc]);
+
   return (
     <div>
-      <Pie data={data} />
+      <Pie
+        data={data}
+        ref={pieRef}
+        options={options}
+        style={{ visibility: 'hidden' }}
+      />
     </div>
   );
 };

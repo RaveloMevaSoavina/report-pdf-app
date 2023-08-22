@@ -5,21 +5,21 @@ import Header from './components/Header/Header';
 import Report from './components/ReportPDF/Report';
 import usePdfGenerator from './hooks/usePdfGenerator';
 import { Chart, ArcElement } from 'chart.js';
+import { useState } from 'react';
 import PieChart from './components/PieChart/Chart';
-
-// import useImageGenerator from './hooks/useImageGenerator';
-// import PieRechartComponent from './components/PieChart/Chart';
 
 Chart.register(ArcElement);
 
 function App() {
   const generatePDF = usePdfGenerator();
-  // const generateImageOfChart = useImageGenerator();
+
+  const [imageSrc, setImageSrc] = useState<string>('');
 
   const handleDownload = async () => {
-    // generateImageOfChart(<PieRechartComponent />, 'chart');
-    generatePDF(<Report />, 'PDF_REPORT.pdf');
+    generatePDF(<Report imageSrc={imageSrc} />, 'PDF_REPORT.pdf');
   };
+
+  console.log(imageSrc);
 
   return (
     <div id='root'>
@@ -43,9 +43,7 @@ function App() {
             <span>Download your ReportPDF</span>
           </div>
         </DownloadButton>
-        <div className='image'>
-          <PieChart />
-        </div>
+        <PieChart setImageSrc={setImageSrc} />
       </div>
     </div>
   );
